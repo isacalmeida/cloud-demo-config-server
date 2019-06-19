@@ -33,7 +33,7 @@ spring:
         url: jdbc:postgresql://localhost:5432/auth-server
         username: postgres
     jpa:
-        database-platform: org.hibernate.dialect.PostgreSQLDialect
+        database-platform: org.hibernate.dialect.PostgreSQL10Dialect
         generate-ddl: false
         hibernate:
             ddl-auto: none
