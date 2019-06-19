@@ -25,11 +25,11 @@ security:
 
 spring:
     datasource:
-        data: classpath:sql/data.sql
+        data: sql/data.sql
         driver-class-name: org.postgresql.Driver
         password: 'postgres'
         platform: postgres
-        schema: classpath:sql/schema.sql
+        schema: sql/schema.sql
         url: jdbc:postgresql://localhost:5432/auth-server
         username: postgres
     jpa:
