@@ -1,17 +1,17 @@
 server:
-  port: 9092
+    port: 9092
 
 eureka:
-  instance:
-    hostname: localhost
-    port: 9091
-  client:
-    registerWithEureka: true
-    fetchRegistry: false
-    serviceUrl:
-      defaultZone: http://${eureka.instance.hostname}:${eureka.instance.port}/eureka/
-  server:
-    wait-time-in-ms-when-sync-empty: 3000
+    instance:
+        hostname: localhost
+        port: 9091
+    client:
+        registerWithEureka: true
+        fetchRegistry: false
+        serviceUrl:
+            defaultZone: http://${eureka.instance.hostname}:${eureka.instance.port}/eureka/
+    server:
+        wait-time-in-ms-when-sync-empty: 3000
 
 security:
     oauth2:
@@ -25,17 +25,19 @@ security:
 
 spring:
     datasource:
-#        data: classpath:/data.sql
+        continue-on-error: true
+        data: classpath:/data.sql
         driver-class-name: org.postgresql.Driver
-        password: 'postgres'
+        initialization-mode: always
+        initialize: true
+        password: postgres
         platform: postgres
-#        schema: classpath:/schema.sql
+        schema: classpath:/schema.sql
         url: jdbc:postgresql://localhost:5432/auth-server
         username: postgres
     jpa:
         database-platform: org.hibernate.dialect.PostgreSQL9Dialect
-#        generate-ddl: false
-        initialization-mode: always
+        generate-ddl: false
         hibernate:
             ddl-auto: none
-        show-sql: true
+            show-sql: true
