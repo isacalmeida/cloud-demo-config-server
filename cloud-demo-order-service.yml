@@ -25,7 +25,6 @@ spring:
         continue-on-error: true
         driver-class-name: org.postgresql.Driver
         initialization-mode: always
-        initialize: true
         password: postgres
         platform: postgres
         url: jdbc:postgresql://localhost:5432/order-service
