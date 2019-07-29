@@ -21,6 +21,8 @@ eureka:
 #            userInfoUri: ${authserver.hostname}/user
 
 spring:
+    
+    # Datasource properties
     datasource:
         continue-on-error: true
         driver-class-name: org.postgresql.Driver
@@ -29,9 +31,16 @@ spring:
         platform: postgres
         url: jdbc:postgresql://localhost:5432/microservices-tcc
         username: postgres
+
+    # JPA Properties
     jpa:
         database-platform: org.hibernate.dialect.PostgreSQL10Dialect
-        generate-ddl: false
+        generate-ddl: true
         hibernate:
-            ddl-auto: create
+            ddl-auto: update
+        properties:
+            dialect: org.hibernate.dialect.PostgreSQL10Dialect
+                hibernate:
+                    temp:
+                        use_jdbc_metadata_defaults: false
         show-sql: true
