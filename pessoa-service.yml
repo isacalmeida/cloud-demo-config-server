@@ -1,46 +1,44 @@
 server:
-    port: 8000
+  port: 8000
 
 eureka:
-    instance:
-        hostname: localhost
-        port: 8761
-    client:
-        registerWithEureka: true
-        fetchRegistry: false
-        serviceUrl:
-            defaultZone: http://${eureka.instance.hostname}:${eureka.instance.port}/eureka/
-        server:
-            wait-time-in-ms-when-sync-empty: 3000
+  instance:
+    hostname: localhost
+    port: 8761
+  client:
+    registerWithEureka: true
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:${eureka.instance.port}/eureka/
+    server:
+      wait-time-in-ms-when-sync-empty: 3000
 
 #authserver:
-#    hostname: http://localhost:9092
+#  hostname: http://localhost:9092
 #security:
-#    oauth2:
-#        resource:
-#            userInfoUri: ${authserver.hostname}/user
+#  oauth2:
+#    resource:
+#      userInfoUri: ${authserver.hostname}/user
 
 spring:
-    
     # Datasource properties
-    datasource:
-        continue-on-error: true
-        driver-class-name: org.postgresql.Driver
-        initialization-mode: always
-        password: postgres
-        platform: postgres
-        url: jdbc:postgresql://localhost:5432/microservices-tcc
-        username: postgres
-
+  datasource:
+    continue-on-error: true
+    driver-class-name: org.postgresql.Driver
+    initialization-mode: always
+    password: postgres
+    platform: postgres
+    url: jdbc:postgresql://localhost:5432/microservices-tcc
+    username: postgres
     # JPA Properties
-    jpa:
-        database-platform: org.hibernate.dialect.PostgreSQL10Dialect
-        generate-ddl: true
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQL10Dialect
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      dialect: org.hibernate.dialect.PostgreSQL10Dialect
         hibernate:
-            ddl-auto: update
-        properties:
-            dialect: org.hibernate.dialect.PostgreSQL10Dialect
-                hibernate:
-                    temp:
-                        use_jdbc_metadata_defaults: false
-        show-sql: true
+          temp:
+            use_jdbc_metadata_defaults: false
+    show-sql: true
