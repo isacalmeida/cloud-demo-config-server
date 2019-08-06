@@ -1,15 +1,5 @@
 server:
   port: 9000
-  
-spring:
-  mvc:
-    view:
-      prefix: /WEB-INF/view/
-      suffix: .jsp
-#  thymeleaf:
-#    mode: HTML
-#    cache: false
-  
 
 eureka:
   instance:
