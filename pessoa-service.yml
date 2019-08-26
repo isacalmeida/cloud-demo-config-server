@@ -27,7 +27,7 @@ spring:
     initialization-mode: always
     password: postgres
     platform: postgres
-    url: jdbc:postgresql://localhost:5432/microservices-tcc
+    url: jdbc:postgresql://localhost:5432/pessoa-service
     username: postgres
     # JPA Properties
   jpa:
