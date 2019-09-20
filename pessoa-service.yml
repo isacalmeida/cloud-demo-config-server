@@ -27,7 +27,7 @@ spring:
     initialization-mode: always
     password: postgres
     platform: postgres
-    url: jdbc:postgresql://db-microservices.ci347vo4wg5v.us-east-2.rds.amazonaws.com:5432/pessoa-service
+    url: jdbc:postgresql://localhost:5432/pessoa-service
     username: postgres
     # JPA Properties
   jpa:
