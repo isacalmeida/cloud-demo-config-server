@@ -1,43 +1,49 @@
 server:
-    port: 9092
+  port: 8762
 
 eureka:
-    instance:
-        hostname: localhost
-        port: 9091
-    client:
-        registerWithEureka: true
-        fetchRegistry: false
-        serviceUrl:
-            defaultZone: http://${eureka.instance.hostname}:${eureka.instance.port}/eureka/
+  instance:
+    hostname: localhost
+    port: 8761
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    healthcheck:
+      enabled: true
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:${eureka.instance.port}/eureka/
     server:
-        wait-time-in-ms-when-sync-empty: 3000
+      wait-time-in-ms-when-sync-empty: 3000
 
 security:
-    oauth2:
-        client:
-            access-token-validity-seconds: 1800
-            authorized-grant-types: password,refresh_token
-            client-id: coderef
-            client-secret: $2a$10$p9Pk0fQNAQSesI4vuvKA0OZanDD2
-            resource-ids: resources
-            scope: read,write
+  oauth2:
+    client:
+      access-token-validity-seconds: 1800
+      authorized-grant-types: password,refresh_token
+      client-id: microservicesisac
+      client-secret: $2a$10$p9Pk0fQNAQSesI4vuvKA0OZanDD2
+      resource-ids: resources
+      scope: read,write
 
 spring:
-    datasource:
-        continue-on-error: true
-        data: classpath:/data.sql
-        driver-class-name: org.postgresql.Driver
-        initialization-mode: always
-        initialize: true
-        password: postgres
-        platform: postgres
-        schema: classpath:/schema.sql
-        url: jdbc:postgresql://localhost:5432/auth-server
-        username: postgres
-    jpa:
-        database-platform: org.hibernate.dialect.PostgreSQL10Dialect
-        generate-ddl: false
-        hibernate:
-            ddl-auto: none
-            show-sql: true
+  # Datasource properties
+  datasource:
+    continue-on-error: true
+    driver-class-name: org.postgresql.Driver
+    initialization-mode: always
+    password: postgres
+    platform: postgres
+    url: jdbc:postgresql://localhost:5432/auth-server
+    username: postgres
+    # JPA Properties
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQL10Dialect
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      dialect: org.hibernate.dialect.PostgreSQL10Dialect
+      hibernate:
+        temp:
+          use_jdbc_metadata_defaults: false
+    show-sql: true
