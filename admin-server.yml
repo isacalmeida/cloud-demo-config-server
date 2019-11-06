@@ -1,0 +1,15 @@
+eureka:
+  instance:
+    hostname: localhost
+    #hostname: 172.31.25.120
+    #hostname: 3.17.57.215
+    port: 8760
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    healthcheck:
+      enabled: true
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:${eureka.instance.port}/eureka/
+    server:
+      wait-time-in-ms-when-sync-empty: 3000
