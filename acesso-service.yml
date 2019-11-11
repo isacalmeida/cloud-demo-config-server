@@ -20,7 +20,11 @@ eureka:
     wait-time-in-ms-when-sync-empty: 3000
 
 spring:
-    # Datasource properties
+  boot:
+    admin:
+      client:
+        url: http://localhost:8760
+  # Datasource properties
   datasource:
     continue-on-error: true
     driver-class-name: org.postgresql.Driver
@@ -51,9 +55,3 @@ management:
   endpoint:
     health:
       show-details: ALWAYS
-
-spring:
-  boot:
-    admin:
-      client:
-        url: http://localhost:8760
