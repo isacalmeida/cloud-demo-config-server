@@ -31,3 +31,8 @@ management:
     health:
       show-details: ALWAYS
 
+spring:
+  boot:
+    admin:
+      client:
+        url: http://localhost:8760
