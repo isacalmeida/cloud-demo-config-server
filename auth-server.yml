@@ -3,17 +3,24 @@ server:
 
 eureka:
   instance:
+    health-check-url-path: /actuator/health
     hostname: localhost
+    #hostname: 172.31.25.120
+    #hostname: 3.17.57.215
+    leaseRenewalIntervalInSeconds: 10
+    metadata-map:
+      startup: ${random.int}
     port: 8761
   client:
-    registerWithEureka: true
     fetchRegistry: true
     healthcheck:
       enabled: true
+    registryFetchIntervalSeconds: 5
+    registerWithEureka: true
     serviceUrl:
       defaultZone: http://${eureka.instance.hostname}:${eureka.instance.port}/eureka/
-    server:
-      wait-time-in-ms-when-sync-empty: 3000
+  server:
+    wait-time-in-ms-when-sync-empty: 3000
 
 # security:
 #  oauth2:
@@ -26,6 +33,10 @@ eureka:
 #      scope: read,write 
 
 spring:
+  boot:
+    admin:
+      client:
+        url: http://localhost:8760
   # Datasource properties
   datasource:
     continue-on-error: true
@@ -47,3 +58,12 @@ spring:
         temp:
           use_jdbc_metadata_defaults: false
     show-sql: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"  
+  endpoint:
+    health:
+      show-details: ALWAYS
