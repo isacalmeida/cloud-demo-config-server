@@ -1,38 +1,16 @@
 server:
   port: 8765
 
-eureka:
-  instance:
-    health-check-url-path: /actuator/health
-    hostname: localhost
-    #hostname: 172.31.25.120
-    #hostname: 3.17.57.215
-    leaseRenewalIntervalInSeconds: 10
-    metadata-map:
-      startup: ${random.int}
-    port: 8761
-  client:
-    fetchRegistry: true
-    healthcheck:
-      enabled: true
-    registryFetchIntervalSeconds: 5
-    registerWithEureka: true
-    serviceUrl:
-      defaultZone: http://${eureka.instance.hostname}:${eureka.instance.port}/eureka/
-  server:
-    wait-time-in-ms-when-sync-empty: 3000
-    
-management:
-  endpoints:
-    web:
-      exposure:
-        include: "*"  
-  endpoint:
-    health:
-      show-details: ALWAYS
+hystrix:
+  metrics:
+    polling-interval-ms: 30000
 
-spring:
-  boot:
-    admin:
-      client:
-        url: http://localhost:8760
+zuul:
+   host:
+      time-to-live: -1
+      connect-timeout-millis: 5000
+      max-per-route-connections: 10000
+      max-total-connections: 5000
+      socket-timeout-millis: 60000
+   semaphore:
+      max-semaphores: 500
