@@ -31,3 +31,8 @@ spring:
     admin:
       client:
         url: http://localhost:8760
+  jmx:
+    enabled: true
+  jackson:
+    serialization:
+      INDENT_OUTPUT: true
